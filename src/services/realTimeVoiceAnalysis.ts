@@ -86,7 +86,7 @@ class RealTimeVoiceAnalysisService {
     }
 
     this.onResultCallback = onResult;
-    this.onErrorCallback = onError;
+    this.onErrorCallback = onError || null;
     this.isAnalyzing = true;
 
     // Start continuous analysis
