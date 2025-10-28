@@ -48,7 +48,7 @@ const BEFAST_QUESTIONS = [
 ];
 
 export default function TestPage() {
-  const { befastAnswers, updateBEFASTAnswer, setCurrentScreen, setFaceAnalysis, setSpeechAnalysis } = useAppStore();
+  const { befastAnswers, updateBEFASTAnswer, setCurrentScreen, setFaceAnalysis, setSpeechAnalysis, resetApp } = useAppStore();
   const [showCamera, setShowCamera] = useState(false);
   const [showMicrophone, setShowMicrophone] = useState(false);
   const [showRealTimeAnalysis, setShowRealTimeAnalysis] = useState(false);
@@ -500,10 +500,8 @@ ${isSlurred ?
           <button 
             className="px-6 py-2 bg-gray-500 text-white font-semibold rounded-lg hover:bg-gray-600 transition-colors"
             onClick={() => {
-              // Reset all answers
-              Object.keys(befastAnswers).forEach(key => {
-                updateBEFASTAnswer(key as any, null);
-              });
+              // Reset all answers using the resetApp function
+              resetApp();
               setAnalysisResults({});
             }}
           >
